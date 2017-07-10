@@ -34,7 +34,7 @@ class ProductListController: UIViewController {
     
     func refreshDown() {
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Data is updated")
+        refreshControl.attributedTitle = NSAttributedString(string: "")
         refreshControl.addTarget(self, action: #selector(ProductListController.refreshData(sender:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
