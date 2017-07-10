@@ -56,7 +56,6 @@ class ProductListController: UIViewController {
         }
     }
     
-    
     private func getMenu() {
         ProductApi.instance.getCategory().subscribe(onNext: { category in
             self.categories = category
@@ -75,7 +74,18 @@ class ProductListController: UIViewController {
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
-            KVNProgress.dismiss()
+            }, onCompleted: {
+                if self.product.count == 0  {
+                    KVNProgress.dismiss()
+                    sleep(1)
+                    let alert = UIAlertController(title: "Today", message: "in \"\(self.category!)\" category no products", preferredStyle: UIAlertControllerStyle.alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(defaultAction)
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    KVNProgress.dismiss()
+                }
+                
         }).addDisposableTo(disposeBag)
     }
     

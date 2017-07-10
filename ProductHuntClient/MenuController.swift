@@ -70,8 +70,8 @@ final class MenuController : UIViewController {
     @IBAction func selectBooks() {
         let newVC = storyboard!.instantiateViewController(withIdentifier: "select") as! ProductListController
         let nc = NavigationController(rootViewController: newVC)
-        newVC.title = (self.tech.titleLabel?.text)!
-        newVC.category = (self.tech.titleLabel?.text)!
+        newVC.title = (self.books.titleLabel?.text)!
+        newVC.category = (self.books.titleLabel?.text)!
         present(nc, animated: true)
     }
     
