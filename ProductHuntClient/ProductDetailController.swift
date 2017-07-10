@@ -13,6 +13,7 @@ final class ProductDetailController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var productDetail: Product!
+    var category: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +55,16 @@ extension ProductDetailController: UITableViewDataSource {
                 cell.thumbnailProductDetail.image = image
             })
             cell.nameProductDetail.text = productDetail?.nameProduct
+            cell.categoryName.setTitle(category.localizedUppercase, for: .normal)
             cell.descriptionProductDetail.text = productDetail?.descriptionProduct
             tableView.rowHeight = 88
             return cell
         case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "getItCell", for: indexPath) as! ProductGetItCell
+            tableView.rowHeight = 60
+            cell.votesCountProductDetail.text = "▲ \(productDetail.upvotesProduct)"
+            return cell
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "screenshotCell", for: indexPath) as! ProductScreenshotCell
 
             guard let url = NSURL(string: productDetail.screenshotUrl?["300px"]! as! String) else {
@@ -69,10 +76,6 @@ extension ProductDetailController: UITableViewDataSource {
             })
             
             tableView.rowHeight = 250
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "getItCell", for: indexPath) as! ProductGetItCell
-            tableView.rowHeight = 44
             return cell
         default: break
         }
@@ -102,6 +105,7 @@ class ProductDetailCell: UITableViewCell {
     @IBOutlet weak var thumbnailProductDetail: UIImageView!
     @IBOutlet weak var nameProductDetail: UILabel!
     @IBOutlet weak var descriptionProductDetail: UILabel!
+    @IBOutlet weak var categoryName: UIButton!
 }
 
 class ProductScreenshotCell: UITableViewCell {
@@ -109,8 +113,6 @@ class ProductScreenshotCell: UITableViewCell {
 }
 
 class ProductGetItCell: UITableViewCell {
-    
-    @IBAction func getIt(_ sender: Any) {
-        
-    }
+    @IBOutlet weak var votesCountProductDetail: UILabel!
+    @IBAction func getIt(_ sender: Any) {}
 }

@@ -68,7 +68,7 @@ class ProductListController: UIViewController {
     }
     
     private func downloadProduct() {
-        ProductApi.instance.getProducts(category: category == nil ? categories[0].category.localizedLowercase : category.localizedLowercase).subscribe(onNext: { [weak self] product in
+        ProductApi.instance.getProducts(category: (category == nil ? categories[0].category : category).localizedLowercase).subscribe(onNext: { [weak self] product in
             self?.product = product
             
             DispatchQueue.main.async {
@@ -96,6 +96,7 @@ class ProductListController: UIViewController {
                 let selectedProduct = self.product[selectedIndexPath.row]
                 let productDetailController = segue.destination as! ProductDetailController
                 productDetailController.productDetail = selectedProduct
+                productDetailController.category = self.title
             }
         }
     }
@@ -127,6 +128,7 @@ extension ProductListController: UITableViewDataSource {
         
         cell.nameProduct.text = product[indexPath.row].nameProduct
         cell.descriptionProduct.text = product[indexPath.row].descriptionProduct
+        cell.categoryName.setTitle((category ?? categories[0].category).localizedUppercase, for: .normal)
         cell.upvotesProduct.text = "+ " + product[indexPath.row].upvotesProduct.description
         return cell
     }
@@ -154,4 +156,5 @@ class ProductListCell: UITableViewCell {
     @IBOutlet weak var nameProduct: UILabel!
     @IBOutlet weak var descriptionProduct: UILabel!
     @IBOutlet weak var upvotesProduct: UILabel!
+    @IBOutlet weak var categoryName: UIButton!
 }

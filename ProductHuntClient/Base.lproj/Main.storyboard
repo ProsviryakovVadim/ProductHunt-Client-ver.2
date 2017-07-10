@@ -74,6 +74,7 @@ Share what's on your mind
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="categoryName" destination="BIN-vO-NMe" id="gMf-N7-BjZ"/>
                                             <outlet property="descriptionProduct" destination="HE9-hr-6Ui" id="rR3-0o-h9f"/>
                                             <outlet property="nameProduct" destination="LA0-YU-CaJ" id="jLW-Ce-C2W"/>
                                             <outlet property="thumbnailProduct" destination="rjI-S7-B1Y" id="n4h-SE-q8o"/>
@@ -128,7 +129,7 @@ Share what's on your mind
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="90" id="fGW-Ss-aHS" customClass="ProductDetailCell" customModule="ProductHuntClient" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="90" id="fGW-Ss-aHS" customClass="ProductDetailCell" customModule="ProductHuntClient" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fGW-Ss-aHS" id="9Ry-wy-Y2A">
@@ -186,13 +187,52 @@ Share what's on your mind
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="categoryName" destination="x4H-1I-mrZ" id="pg7-1h-AWq"/>
                                             <outlet property="descriptionProductDetail" destination="Kj5-BM-q6F" id="zJg-Jl-C1g"/>
                                             <outlet property="nameProductDetail" destination="hC3-Wp-fQW" id="nw7-1A-fda"/>
                                             <outlet property="thumbnailProductDetail" destination="abI-dx-lev" id="uG9-cu-XsY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="screenshotCell" rowHeight="250" id="S0S-4Z-dFO" customClass="ProductScreenshotCell" customModule="ProductHuntClient" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="118" width="375" height="250"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="getItCell" rowHeight="66" id="nVF-4h-Zj5" customClass="ProductGetItCell" customModule="ProductHuntClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="118" width="375" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nVF-4h-Zj5" id="ABS-un-DGF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naG-CL-P87">
+                                                    <rect key="frame" x="8" y="8" width="150" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.86364156007766724" green="0.33104360103607178" blue="0.1458040177822113" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="GET IT">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="getIt:" destination="nVF-4h-Zj5" eventType="touchUpInside" id="96F-o5-FHD"/>
+                                                        <segue destination="gbd-gh-VuM" kind="show" identifier="webView" id="pJA-wo-yOy"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="▲ 463" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjk-kC-HZb">
+                                                    <rect key="frame" x="166" y="8" width="150" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="votesCountProductDetail" destination="Fjk-kC-HZb" id="y8z-NM-fWZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="screenshotCell" rowHeight="250" id="S0S-4Z-dFO" customClass="ProductScreenshotCell" customModule="ProductHuntClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="184" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S0S-4Z-dFO" id="3gy-04-LwW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
@@ -212,34 +252,6 @@ Share what's on your mind
                                         <connections>
                                             <outlet property="screenshotProductDetail" destination="c7e-Ug-i98" id="DEm-aB-eQ2"/>
                                         </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="getItCell" rowHeight="66" id="nVF-4h-Zj5" customClass="ProductGetItCell" customModule="ProductHuntClient" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="368" width="375" height="66"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nVF-4h-Zj5" id="ABS-un-DGF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naG-CL-P87">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
-                                                    <color key="backgroundColor" red="0.86364156007766724" green="0.33104360103607178" blue="0.1458040177822113" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="GET IT">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="getIt:" destination="nVF-4h-Zj5" eventType="touchUpInside" id="96F-o5-FHD"/>
-                                                        <segue destination="gbd-gh-VuM" kind="show" identifier="webView" id="pJA-wo-yOy"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="naG-CL-P87" firstAttribute="leading" secondItem="ABS-un-DGF" secondAttribute="leading" id="DMu-ui-QVM"/>
-                                                <constraint firstItem="naG-CL-P87" firstAttribute="top" secondItem="ABS-un-DGF" secondAttribute="top" id="YxG-H7-pFi"/>
-                                                <constraint firstAttribute="trailing" secondItem="naG-CL-P87" secondAttribute="trailing" id="jbR-zo-ayO"/>
-                                                <constraint firstAttribute="bottom" secondItem="naG-CL-P87" secondAttribute="bottom" id="nZB-VW-Y3X"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

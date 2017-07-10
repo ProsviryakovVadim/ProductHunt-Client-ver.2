@@ -24,7 +24,6 @@ final class Product: Mappable {
     private(set) var redirectUrl: String = ""
     private(set) var screenshotUrl: Dictionary<String, AnyObject>?
 
-
     init?(map: Map) {}
     func mapping(map: Map) {
         nameProduct <- map["name"]
