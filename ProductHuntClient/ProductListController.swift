@@ -76,13 +76,14 @@ class ProductListController: UIViewController {
             }
             }, onCompleted: {
                 if self.product.count == 0  {
-                    KVNProgress.dismiss()
                     sleep(1)
+                    KVNProgress.dismiss()
                     let alert = UIAlertController(title: "Today", message: "in \"\(self.category!)\" category no products", preferredStyle: UIAlertControllerStyle.alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(defaultAction)
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    sleep(1)
                     KVNProgress.dismiss()
                 }
                 
